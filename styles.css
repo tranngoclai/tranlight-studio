@@ -1,0 +1,27 @@
+/* Shared styles for the Tranlight Studio static pages (home, privacy, terms). */
+:root {
+  --bg: #fbfaf7;
+  --fg: #1d1b26;
+  --muted: #5d5a6b;
+  --accent: #c7761a;
+  --border: #e6e2d8;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e0d1a; --fg: #ece9f5; --muted: #a29fb5; --accent: #ffb347; --border: #2a2740; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+header { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+header img { width: 40px; height: 40px; border-radius: 10px; }
+header a { color: var(--fg); text-decoration: none; font-weight: 600; }
+h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+p, li { color: var(--fg); }
+.meta { color: var(--muted); margin-bottom: 24px; }
+a { color: var(--accent); }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+footer a { margin-right: 16px; }

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Signing in – Tranlight Studio</title>
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main>
+<header><img src="/app-icon.png" alt=""><a href="/">Tranlight Studio</a></header>
+<h1>Finishing TikTok sign-in…</h1>
+<p class="meta" id="status">Handing the authorization back to the local app.</p>
+<p>If nothing happens, make sure <code>npm run tiktok:login</code> is still running, then <a id="retry" href="#">try again</a>.</p>
+<footer><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a></footer>
+</main>
+<script>
+  // TikTok does not accept localhost redirect URIs, so this page relays the OAuth
+  // result (code/state or error) to the CLI's local listener. The code is useless
+  // without the CLI's PKCE verifier and client secret.
+  const LOCAL_CALLBACK = "http://localhost:3455/callback/";
+  const target = LOCAL_CALLBACK + window.location.search;
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById("retry").href = target;
+  if (!params.has("code") && !params.has("error")) {
+    document.getElementById("status").textContent = "No authorization data found in this URL.";
+  } else {
+    window.location.replace(target);
+  }
+</script>
+</body>
+</html>
